@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        #sliderContainer {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="sliderContainer">
+        <img id="sliderImage" src="" alt="Image Slider">
+        <br>
+        <button class="btn" onclick="prevImage()">Previous</button>
+        <button class="btn" onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            "./images/javaimg1.jpg",
+            "./images/javaimg2.jpg",
+            "./images/javaimg3.jpg"
+        ];
+        
+        let currentIndex = 0;
+        
+        function updateImage() {
+            document.getElementById("sliderImage").src = images[currentIndex];
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            updateImage();
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            updateImage();
+        }
+        
+        // Initialize with first image
+        updateImage();
+    </script>
+</body>
+</html>
